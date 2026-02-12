@@ -1,0 +1,137 @@
+### creating user
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName": "gopi",
+    "lastName": "more",
+    "email": "gopimore@gmail.com",
+    "password": "User@12345",
+    "profileImageUrl": "https://example.com/avatars/author.png"
+}
+
+
+### authenticating user
+###
+POST http://localhost:4000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email": "gopimore@gmail.com",
+    "password": "User@12345",
+    "role":"USER"
+}
+
+
+### creating author
+###
+POST http://localhost:4000/author-api/users
+Content-Type: application/json
+
+{
+    "firstName": "gopi",
+    "lastName": "more",
+    "email": "gopi@gmail.com",
+    "password": "author@12345",
+    "profileImageUrl": "https://example.com/avatars/author.png"
+}
+
+
+### authenticating author
+###
+POST http://localhost:4000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email": "gopi@gmail.com",
+    "password": "author@12345",
+}
+
+
+###creating the new article
+###
+POST http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"698a90354ba0b500522dd8bc",
+     "title":"javaScript",
+     "category":"programming",
+     "content":"content of javascript article"
+
+}
+
+
+#### read the articles of a author
+####
+GET http://localhost:4000/author-api/articles/698a90354ba0b500522dd8bc
+
+
+#### update article by author
+###
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"698a90354ba0b500522dd8bc",
+    "articleId":"698a90a64ba0b500522dd8c1",
+     "title":"javaScript",
+     "category":"Web Dev",
+     "content":"content of javascript article"
+
+}
+
+### Deleting the article 
+DELETE http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author": "698a90354ba0b500522dd8bc",
+    "articleId": "698a90a64ba0b500522dd8c1"
+}
+
+
+
+
+#### logout
+###
+POST http://localhost:4000/common-api/logout
+
+### reading article by user
+
+###
+GET http://localhost:4000/user-api/articles
+### add comment to an article by user
+
+###
+### comment
+PUT http://localhost:4000/user-api/articles/6989b0fc39eac380d1679991
+Content-Type: application/json
+
+{
+    "author":"698a90354ba0b500522dd8bc",
+    "comment":"good"
+}
+###
+### checking with Invalid path
+GET http://localhost:4000/test
+
+### blocking user by admin
+### 
+PUT  http://localhost:4000/admin-api/block/698ab3ce70f07ce0788a022d
+
+### unblocking user
+###
+PUT http://localhost:4000/admin-api/unblock/698ab3ce70f07ce0788a022d
+
+### change password
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+    "email":"gopi@gmail.com",
+    "oldpassword":"author@123456",
+    "newpassword":"newauthor@123456"
+}
+
+ 
